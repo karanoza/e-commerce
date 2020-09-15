@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { genSalt, hash } from "bcryptjs";
+
 let UserSchema = new Schema({
   firstName: {
     type: String,
