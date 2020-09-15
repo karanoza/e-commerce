@@ -1,12 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Usercontroller = void 0;
-var Usercontroller = /** @class */ (function () {
-    function Usercontroller() {
+exports.UserController = void 0;
+var UserController = /** @class */ (function () {
+    function UserController() {
     }
-    Usercontroller.login = function (req, res, next) {
+    UserController.login = function (req, res, next) {
         res.json({ user: "Test", success: "true" });
     };
-    return Usercontroller;
+    UserController.registration = function (req, res, next) {
+        console.log(req.body);
+        res.json({ user: "test", success: "true" });
+    };
+    UserController.updateProfile = function (req, res, next) {
+        console.log(req.body);
+        res.json({ user: "test3", success: "true" });
+    };
+    return UserController;
 }());
-exports.Usercontroller = Usercontroller;
+exports.UserController = UserController;
