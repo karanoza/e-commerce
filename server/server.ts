@@ -23,10 +23,12 @@ app.use(bodyParser.json());
 app.use("/user", userRoute);
 app.use("/registration", userRoute);
 
-//connect mongodb also creates new db ecomdb with default port ‘:27017’
-var Mongoconnect = mongoose.connect("mongodb://localhost:27017/ecomdb");
+//connect mongodb
+var Mongoconnect = mongoose.connect(
+  "mongodb+srv://dbuser:karan12345@ecomdb.fwcnt.mongodb.net/ecomdb?retryWrites=true&w=majority"
+);
 
-mongoose.connection.on("connected", () => {
+mongoose.connection.once("connected", () => {
   console.log("Connected to database mongodb @ 27017");
 });
 

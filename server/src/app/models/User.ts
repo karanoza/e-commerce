@@ -1,6 +1,13 @@
 import { Schema, model } from "mongoose";
 import { genSalt, hash } from "bcryptjs";
 
+let addressInfo = new Schema({
+  addressLine1: String,
+  addressLine2: String,
+  city: String,
+  pin: String,
+});
+
 let UserSchema = new Schema({
   firstName: {
     type: String,
@@ -40,6 +47,7 @@ let UserSchema = new Schema({
     required: true,
     default: "User",
   },
+  addressInfo: addressInfo,
 });
 
 //  Password encryption using bcryptjs
