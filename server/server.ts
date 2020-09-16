@@ -7,6 +7,7 @@ import * as dotenv from "dotenv";
 import * as mongoose from "mongoose"; // to include mongoose ( to interact with MongoDB )
 import * as cors from "cors"; // to include cors ( to create middleware functionalities )
 import * as path from "path"; // to include path ( to set paths  for interaction)
+import * as multer from "multer";
 
 dotenv.load;
 

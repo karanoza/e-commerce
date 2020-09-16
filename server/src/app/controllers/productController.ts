@@ -32,6 +32,7 @@ export class ProductController {
   }
 
   static addProducts(req: Request, res: Response, next: NextFunction) {
+    req.body.imageUrl = "http://localhost:8000" + req.file.originalname; //imageURL
     const product = new Product(req.body);
     Product.insertMany(product, (err: Errback, result: any) => {
       if (err) {
@@ -39,7 +40,7 @@ export class ProductController {
       } else {
         res.json({
           status: "success",
-          message: "categories Added!",
+          message: "Product Added!",
           data: result,
         });
       }
