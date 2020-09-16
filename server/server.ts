@@ -1,4 +1,5 @@
-import { userRoute } from "./src/app/routes/userRoutes";
+import { productRoute, userRoute, categoryroute } from "./src/app/routes/index";
+
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
@@ -21,7 +22,8 @@ app.use(cors()); // Cross Origin Resource Sharing
 app.use(bodyParser.json());
 
 app.use("/user", userRoute);
-app.use("/registration", userRoute);
+app.use("/category", categoryroute);
+app.use("/product", productRoute);
 
 //connect mongodb
 var Mongoconnect = mongoose.connect(
