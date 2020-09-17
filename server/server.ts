@@ -8,11 +8,18 @@ import * as mongoose from "mongoose"; // to include mongoose ( to interact with 
 import * as cors from "cors"; // to include cors ( to create middleware functionalities )
 import * as path from "path"; // to include path ( to set paths  for interaction)
 import * as multer from "multer";
+import * as Helmet from "helmet";
+import helmet = require("helmet");
+import * as compression from "compression";
 
 dotenv.load;
 
 // app.get("/", (req, res) => res.send("This is get express api"));
 var app = express();
+
+// heroku deployment
+app.use(helmet());
+app.use(compression());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
