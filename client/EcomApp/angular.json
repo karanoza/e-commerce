@@ -24,6 +24,7 @@
               "projects/EcomPortal/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/EcomPortal/src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "projects/EcomPortal/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/EcomPortal/src/styles.css"
             ],
             "scripts": []
@@ -119,7 +121,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": false
   },
