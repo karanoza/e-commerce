@@ -1,3 +1,5 @@
+import { IAppConfig } from "./IAppConfig";
+import { APP_CONFIG } from "./AppConfig";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LayoutModule } from "@angular/cdk/layout";
@@ -10,6 +12,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { environment } from "../../../environments/environment";
+
+const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
 
 @NgModule({
   declarations: [],
@@ -27,6 +32,7 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule,
   ],
+  providers: [{ provide: APP_CONFIG, useValue: AppConfig }],
   exports: [
     CommonModule,
     LayoutModule,
