@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "@ecom/core": {
+      "projectType": "library",
+      "root": "projects/ecom/core",
+      "sourceRoot": "projects/ecom/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ecom/core/tsconfig.lib.json",
+            "project": "projects/ecom/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ecom/core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ecom/core/src/test.ts",
+            "tsConfig": "projects/ecom/core/tsconfig.spec.json",
+            "karmaConfig": "projects/ecom/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ecom/core/tsconfig.lib.json",
+              "projects/ecom/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -7,11 +7,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialSharedModule } from "./material-shared/material-shared/material-shared.module";
 import { MyCommonModule } from "./common/common/common.module";
 import { RouterModule } from "@angular/router";
-import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UserModule } from "./user/user/user.module";
+import { AdminModule } from "./admin/admin/admin.module";
 
 @NgModule({
-  declarations: [AppComponent, UserDashboardComponent, DashboardComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +20,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     MaterialSharedModule,
     MyCommonModule,
     RouterModule.forRoot([]),
+    UserModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

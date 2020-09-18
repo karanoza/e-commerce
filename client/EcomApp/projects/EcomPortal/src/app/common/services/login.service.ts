@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { IAppConfig } from "../../material-shared/material-shared/IAppConfig";
 import { APP_CONFIG } from "../../material-shared/material-shared/AppConfig";
 import { environment } from ".../../../projects/EcomPortal/src/environments/environment";
+import { IResponse } from "./loginResponse";
 @Injectable({
   providedIn: "root",
 })
@@ -16,6 +17,9 @@ export class LoginService {
   }
 
   login(user: IUser) {
-    return this.http.post(environment.apiENDPoint + "/user/login", user);
+    return this.http.post<IResponse>(
+      environment.apiENDPoint + "/user/login",
+      user
+    );
   }
 }

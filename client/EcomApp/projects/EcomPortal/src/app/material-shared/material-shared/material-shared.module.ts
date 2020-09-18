@@ -10,6 +10,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
@@ -27,6 +28,7 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
@@ -42,6 +44,7 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,

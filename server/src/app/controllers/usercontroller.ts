@@ -18,7 +18,7 @@ export class UserController {
           if(compareSync(req.body.password, result.password)) {
            const token =  sign({id: result._id}, private_key , {expiresIn : '1h'})    //jwttoken
 
-             res.json({status: 'success', message : "Login Successful", data:token})
+             res.json({status: 'success', message : "Login Successful", data:token, role : result.role})
           }else {
             res.json({ status: 'failed', message : 'Username or password is incorrect'})
           }
