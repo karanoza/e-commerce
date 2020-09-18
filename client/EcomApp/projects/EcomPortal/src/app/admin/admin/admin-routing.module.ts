@@ -6,7 +6,7 @@ import { AdminGuard } from "../guard/admin.guard";
 
 const routes: Routes = [
   {
-    path: "admin/dashboard",
+    path: "dashboard",
     component: DashboardComponent,
     canActivate: [AuthGuard, AdminGuard],
   },

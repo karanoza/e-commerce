@@ -18,14 +18,11 @@ import { ErrorHandlerService } from "./common/error-handler/error-handler.servic
   declarations: [AppComponent, ProfileComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
     MaterialSharedModule,
     MyCommonModule,
-    RouterModule.forRoot([]),
-    UserModule,
-    AdminModule,
+    AppRoutingModule,
   ],
   providers: [
     {

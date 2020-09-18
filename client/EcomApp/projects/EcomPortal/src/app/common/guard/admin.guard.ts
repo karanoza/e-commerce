@@ -3,11 +3,11 @@ import {
   CanActivate,
   CanLoad,
   Route,
+  Router,
   UrlSegment,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
-  Router,
 } from "@angular/router";
 import { EncDecService } from "projects/ecom/core/src/lib/enc-dec.service";
 import { Observable } from "rxjs";
@@ -15,7 +15,7 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
-export class UserGuard implements CanLoad {
+export class AdminGuard implements CanLoad {
   constructor(private encService: EncDecService, private router: Router) {}
 
   canLoad(
@@ -24,7 +24,7 @@ export class UserGuard implements CanLoad {
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (sessionStorage.getItem("role") != null) {
       const role = this.encService.decrypt(sessionStorage.getItem("role"), "");
-      if (role === "User") {
+      if (role === "Admin") {
         return true;
       } else {
         return false;
