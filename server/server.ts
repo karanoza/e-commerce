@@ -1,3 +1,4 @@
+import { errorLogRoute } from "./src/app/routes/errorLogRoutes";
 import { productRoute, userRoute, categoryroute } from "./src/app/routes/index";
 
 import * as express from "express";
@@ -19,7 +20,7 @@ var app = express();
 
 // enable-cors
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -42,6 +43,7 @@ app.use(bodyParser.json());
 app.use("/user", userRoute);
 app.use("/category", categoryroute);
 app.use("/product", productRoute);
+app.use("/errorLog", errorLogRoute);
 
 //connect mongodb
 var Mongoconnect = mongoose.connect(
