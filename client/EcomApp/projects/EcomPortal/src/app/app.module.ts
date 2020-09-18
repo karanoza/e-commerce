@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialSharedModule } from "./material-shared/material-shared/material-shared.module";
 import { MyCommonModule } from "./common/common/common.module";
 import { RouterModule } from "@angular/router";
+import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UserDashboardComponent, DashboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
