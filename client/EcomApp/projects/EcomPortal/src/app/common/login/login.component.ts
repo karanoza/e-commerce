@@ -1,9 +1,11 @@
+import { EncDecService } from "./../../../../../ecom/core/src/lib/enc-dec.service";
 import { IUser } from "./../services/user";
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../services/login.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { strict } from "assert";
 import { Router } from "@angular/router";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -17,19 +19,25 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private _snackBar: MatSnackBar,
-    private router: Router
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private encService: EncDecService
   ) {}
 
   ngOnInit(): void {}
 
   login() {
-    this.loginService.login(this.user).subscribe((data) => {
-      if (data.status === "success") {
-        this.navigate(data.role);
+    this.loginService.login(this.user).subscribe((response) => {
+      if (response.status === "success") {
+        const role = this.encService.encrypt(response.role, "");
+        sessionStorage.setItem("role", role);
+        sessionStorage.setItem("token", response.data);
+        this.loginService.isLoggedIn(true);
+        this.loginService.userRole(response.role);
+        this.navigate(response.role);
       } else {
-        this._snackBar.open(data.message, "Login", {
-          duration: 2000,
+        this.snackBar.open(response.message, "Login", {
+          duration: 1000,
         });
       }
     });
@@ -46,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/admin/dashboard"]);
         break;
       default:
-        this._snackBar.open("User does not belongs to valid role", "Login", {
+        this.snackBar.open("User does not belongs to valid role", "Login", {
           duration: 2000,
         });
     }
