@@ -9,6 +9,8 @@ import { MyCommonModule } from "./common/common/common.module";
 import { RouterModule } from "@angular/router";
 import { UserModule } from "./user/user/user.module";
 import { AdminModule } from "./admin/admin/admin.module";
+import { CustomInterceptorService } from "./common/services/custom-Interceptor/custom-interceptor/custom-interceptor.service";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,13 @@ import { AdminModule } from "./admin/admin/admin.module";
     UserModule,
     AdminModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
