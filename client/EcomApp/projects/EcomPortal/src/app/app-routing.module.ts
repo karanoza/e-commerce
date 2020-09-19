@@ -12,12 +12,14 @@ const routes: Routes = [];
     RouterModule.forRoot([
       {
         path: "admin",
-        loadChildren: "../../src/app/admin/admin/admin.module.ts#AdminModule",
+        loadChildren: () =>
+          import("./admin/admin/admin.module").then((m) => m.AdminModule),
         canLoad: [AdminGuard],
       },
       {
         path: "user",
-        loadChildren: "../../src/app/user/user/user.module.ts#UserModule",
+        loadChildren: () =>
+          import("./user/user/user.module").then((m) => m.UserModule),
         canLoad: [UserGuard],
       },
     ]),
