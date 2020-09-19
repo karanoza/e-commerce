@@ -17,7 +17,7 @@ const routes: Routes = [];
       },
       {
         path: "user",
-        loadChildren: "../../src/app/user/user/user.module.ts#AdminModule",
+        loadChildren: "../../src/app/user/user/user.module.ts#UserModule",
         canLoad: [UserGuard],
       },
     ]),

@@ -29,8 +29,8 @@ app.use(function (req, res, next) {
 });
 
 // heroku deployment
-app.use(helmet());
-app.use(compression());
+// app.use(helmet());
+// app.use(compression());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.user).subscribe((response) => {
+      console.log(response.status === "success");
+
       if (response.status === "success") {
         const role = this.encService.encrypt(response.role, "");
         sessionStorage.setItem("role", role);
         sessionStorage.setItem("token", response.data);
         this.loginService.isLoggedIn(true);
         this.loginService.userRole(response.role);
-        this.navigate(response.role);
+        // this.navigate(response.role);
+        this.router.navigate(["/user/dashboard"]);
       } else {
         this.snackBar.open(response.message, "Login", {
           duration: 1000,

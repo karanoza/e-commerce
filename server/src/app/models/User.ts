@@ -37,7 +37,7 @@ let UserSchema = new Schema({
     required: true,
   },
   dob: {
-    type: Date,
+    type: String,
     trim: true,
     required: true,
   },

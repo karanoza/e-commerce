@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, Errback } from "express";
-import { Category } from "../models/category";
+import { Category } from "../models/Category";
 
 export class CategoryController {
   static getCategories(req: Request, res: Response, next: NextFunction) {
