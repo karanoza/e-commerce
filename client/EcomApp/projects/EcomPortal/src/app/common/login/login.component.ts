@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.user).subscribe((response) => {
-      console.log(response.status === "success");
+      console.log(response.role);
 
       if (response.status === "success") {
         const role = this.encService.encrypt(response.role, "");
@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("token", response.data);
         this.loginService.isLoggedIn(true);
         this.loginService.userRole(response.role);
-        // this.navigate(response.role);
-        this.router.navigate(["/user/dashboard"]);
+        this.navigate(response.role);
       } else {
         this.snackBar.open(response.message, "Login", {
           duration: 1000,
@@ -49,16 +48,18 @@ export class LoginComponent implements OnInit {
   navigate(role: string) {
     switch (role) {
       case "User":
-        //redirect to user dashboard
-        this.router.navigate(["/user/dashboard"]);
+        console.log("in user navigation");
+
+        // redirect to User
+        this.router.navigate(["/user/profile"]);
         break;
       case "Admin":
-        //redirect to admin dashboard
+        // redirect to Admin
         this.router.navigate(["/admin/dashboard"]);
         break;
       default:
-        this.snackBar.open("User does not belongs to valid role", "Login", {
-          duration: 2000,
+        this.snackBar.open("User does not belongs to a valid role!", "Login", {
+          duration: 1000,
         });
     }
   }

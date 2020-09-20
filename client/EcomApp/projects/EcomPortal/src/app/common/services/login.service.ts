@@ -13,6 +13,7 @@ import { EncDecService } from "projects/ecom/core/src/lib/enc-dec.service";
 export class LoginService {
   loggedIn = new BehaviorSubject<boolean>(false);
   role = new BehaviorSubject<string>("");
+
   constructor(
     private http: HttpClient,
     private encService: EncDecService,
@@ -23,7 +24,7 @@ export class LoginService {
 
   login(user: IUser) {
     return this.http.post<IResponse>(
-      environment.apiENDPoint + "/user/login",
+      this.appConfig.apiEndPoint + "/user/login",
       user
     );
   }

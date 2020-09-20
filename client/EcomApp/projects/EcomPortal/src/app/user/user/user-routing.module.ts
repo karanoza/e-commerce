@@ -16,6 +16,16 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard, UserGuard],
   },
+  // {
+  //   path: "profile/edit",
+  //   component: ProfileEditComponent,
+  //   canActivate: [AuthGuard, UserGuard],
+  // },
+  // {
+  //   path: "payment",
+  //   component: PaymentComponent,
+  //   canActivate: [AuthGuard, UserGuard],
+  // },
 ];
 
 @NgModule({

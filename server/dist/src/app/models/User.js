@@ -3,11 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 var mongoose_1 = require("mongoose");
 var bcryptjs_1 = require("bcryptjs");
-var addressInfo = new mongoose_1.Schema({
-    addressLine1: String,
-    addressLine2: String,
-    city: String,
-    pin: String,
+var AddressSchema = new mongoose_1.Schema({
+    addressLine1: {
+        type: String,
+        required: false,
+    },
+    addressLine2: {
+        type: String,
+        required: false,
+    },
+    city: {
+        type: String,
+        required: false,
+    },
+    pin: {
+        type: String,
+        required: false,
+    },
 });
 var UserSchema = new mongoose_1.Schema({
     firstName: {
@@ -46,7 +58,7 @@ var UserSchema = new mongoose_1.Schema({
         required: true,
         default: "User",
     },
-    addressInfo: addressInfo,
+    addressInfo: AddressSchema,
 });
 //  Password encryption using bcryptjs
 UserSchema.pre("save", function (next) {
