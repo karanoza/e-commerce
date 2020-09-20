@@ -1,0 +1,12 @@
+.formControl {
+  width: 80%;
+}
+
+.buttonWidth {
+  float: right;
+  width: 20%;
+}
+
+.buttonMargin {
+  margin: 10px;
+}

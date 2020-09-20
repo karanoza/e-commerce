@@ -49,11 +49,11 @@ export class LoginComponent implements OnInit {
     switch (role) {
       case "User":
         console.log("in user navigation");
-
         // redirect to User
         this.router.navigate(["/user/profile"]);
         break;
       case "Admin":
+        console.log("in Admin navigation");
         // redirect to Admin
         this.router.navigate(["/admin/dashboard"]);
         break;
