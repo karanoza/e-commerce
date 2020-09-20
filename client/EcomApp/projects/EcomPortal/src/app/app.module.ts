@@ -13,9 +13,12 @@ import { CustomInterceptorService } from "./common/services/custom-Interceptor/c
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { ErrorHandlerService } from "./common/error-handler/error-handler.service";
+import { CategoryComponent } from './admin/category/category.component';
+import { CategoryAddComponent } from './admin/category/category-add/category-add.component';
+import { CategoryListComponent } from './admin/category/category-list/category-list.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent],
+  declarations: [AppComponent, ProfileComponent, CategoryComponent, CategoryAddComponent, CategoryListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
