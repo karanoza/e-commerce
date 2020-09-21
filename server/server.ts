@@ -1,5 +1,5 @@
 import { errorLogRoute } from "./src/app/routes/errorLogRoutes";
-import { productRoute, userRoute, categoryroute } from "./src/app/routes/index";
+import { productRoute, userRoute, categoryRoute } from "./src/app/routes/index";
 
 import * as express from "express";
 import * as bodyParser from "body-parser";
@@ -41,7 +41,7 @@ app.use(cors()); // Cross Origin Resource Sharing
 app.use(bodyParser.json());
 
 app.use("/user", userRoute);
-app.use("/category", categoryroute);
+app.use("/category", categoryRoute);
 app.use("/product", productRoute);
 app.use("/errorLog", errorLogRoute);
 

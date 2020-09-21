@@ -13,7 +13,7 @@ var CategoryController = /** @class */ (function () {
             else {
                 res.json({
                     status: "success",
-                    message: "Categories found",
+                    message: "Categories found!",
                     data: result,
                 });
             }
@@ -28,7 +28,7 @@ var CategoryController = /** @class */ (function () {
             else {
                 res.json({
                     status: "success",
-                    message: "categories Added!",
+                    message: "Categories Added!",
                     data: result,
                 });
             }

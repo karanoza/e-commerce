@@ -47,6 +47,10 @@ export class CategoryAddComponent implements OnInit {
 
   // Control to Save category
   saveCategories() {
-    this.addcategory.emit(this.categoryForm.controls.category.value);
+    this.categoryService
+      .postCategories(this.categoryForm.controls["category"].value)
+      .subscribe((result) => {
+        console.log(result);
+      });
   }
 }

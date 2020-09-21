@@ -26,7 +26,7 @@ app.use(cors()); // Cross Origin Resource Sharing
 // body - parser  // json: API & MONGO data sharing
 app.use(bodyParser.json());
 app.use("/user", index_1.userRoute);
-app.use("/category", index_1.categoryroute);
+app.use("/category", index_1.categoryRoute);
 app.use("/product", index_1.productRoute);
 app.use("/errorLog", errorLogRoutes_1.errorLogRoute);
 //connect mongodb
