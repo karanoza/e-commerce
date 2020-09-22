@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  background-color: #343a40;
+}
+th.mat-header-cell {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  padding: 5px;
+  color: white;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

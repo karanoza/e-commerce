@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { CategoryService } from "../../common/services/category.service";
 
 @Component({
@@ -8,7 +9,10 @@ import { CategoryService } from "../../common/services/category.service";
 })
 export class CategoryComponent implements OnInit {
   catList: any;
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.loadCategories();
@@ -24,7 +28,9 @@ export class CategoryComponent implements OnInit {
 
   saveCategories(category: any) {
     this.categoryService.postCategories(category).subscribe((result) => {
-      console.log(result);
+      this.snackBar.open(result.message, "Category", {
+        duration: 1000,
+      });
       this.loadCategories();
     });
   }

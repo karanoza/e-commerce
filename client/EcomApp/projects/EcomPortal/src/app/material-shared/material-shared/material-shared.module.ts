@@ -11,6 +11,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatTableModule } from "@angular/material/table";
+import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
@@ -30,6 +32,8 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,
+    MatTableModule,
+    MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -46,6 +50,8 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatFormFieldModule,
     MatSnackBarModule,
     MatInputModule,
+    MatTableModule,
+    MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

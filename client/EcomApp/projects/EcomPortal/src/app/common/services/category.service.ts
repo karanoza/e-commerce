@@ -18,6 +18,9 @@ export class CategoryService {
   }
 
   postCategories(category: any) {
-    return this.http.post(this.appConfig.apiEndPoint + "/category", category);
+    return this.http.post<IResponse>(
+      this.appConfig.apiEndPoint + "/category",
+      category
+    );
   }
 }

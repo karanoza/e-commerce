@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["./category-list.component.css"],
 })
 export class CategoryListComponent implements OnInit {
+  displayedColumns = ["_id", "categoryName", "isLive"];
   @Input() categoryList: any;
 
   constructor() {}
