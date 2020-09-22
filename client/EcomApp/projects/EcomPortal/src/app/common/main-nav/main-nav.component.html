@@ -2,32 +2,107 @@
   <mat-sidenav
     #drawer
     class="sidenav"
-    fixedInViewport
+    fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [opened]="!(isHandset$ | async)"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item (click)="logout()">Logout</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
+    <mat-toolbar>{{ (role$ | async) || "Menu" }}</mat-toolbar>
+    <ng-container *ngIf="(role$ | async) === 'Admin'">
+      <ng-container *ngTemplateOutlet="adminMenu"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="(role$ | async) === 'User'">
+      <ng-container *ngTemplateOutlet="userMenu"></ng-container>
+    </ng-container>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>EcomPortal</span>
+      <mat-toolbar-row>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="titleWidth">EcomPortal</span>
+        <div>
+          <button
+            *ngIf="(role$ | async) === 'User'"
+            type="button"
+            mat-icon-button
+            routerLink="/user/cart"
+          >
+            <mat-icon [matBadge]="(cart$ | async)?.data?.length"
+              >shopping_cart</mat-icon
+            >
+          </button>
+          <button
+            *ngIf="(role$ | async) === 'User'"
+            type="button"
+            mat-icon-button
+            routerLink="/user/wishlist"
+          >
+            <mat-icon>bookmark</mat-icon>
+          </button>
+          <button
+            *ngIf="loginStatus$ | async"
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+          >
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/user/profile/edit">
+              Edit Profile
+            </button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+      </mat-toolbar-row>
     </mat-toolbar>
-    <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #userMenu>
+  <mat-nav-list>
+    <mat-list-item>
+      <a mat-list-item routerLink="/user/product">All</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let category of categories">
+      <a mat-list-item (click)="getProduct(category.categoryName)">{{
+        category.categoryName
+      }}</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a mat-list-item routerLink="/user/order">Orders</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a mat-list-item routerLink="/user/profile">Profile</a>
+    </mat-list-item>
+  </mat-nav-list>
+</ng-template>
+
+<ng-template #adminMenu>
+  <mat-nav-list>
+    <mat-list-item>
+      <a mat-list-item routerLink="/admin/dashboard">Dashboard</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a mat-list-item routerLink="/admin/category">Category</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a mat-list-item routerLink="/admin/product">Product</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a mat-list-item routerLink="/admin/order">Orders</a>
+    </mat-list-item>
+  </mat-nav-list>
+</ng-template>

@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductController = void 0;
-var Product_1 = require("./../models/Product");
+var Product_1 = require("../models/Product");
 var ProductController = /** @class */ (function () {
     function ProductController() {
     }
-    // get products
     ProductController.getProducts = function (req, res, next) {
         Product_1.Product.find({}, function (err, result) {
             if (err) {
@@ -14,13 +13,12 @@ var ProductController = /** @class */ (function () {
             else {
                 res.json({
                     status: "success",
-                    message: "Products found",
+                    message: "Products found!",
                     data: result,
                 });
             }
         });
     };
-    // getproduct by ID
     ProductController.getProductById = function (req, res, next) {
         var productId = req.params.id;
         Product_1.Product.findById(productId, function (err, result) {
@@ -30,17 +28,16 @@ var ProductController = /** @class */ (function () {
             else {
                 res.json({
                     status: "success",
-                    message: "Product found",
+                    message: "Product found!",
                     data: result,
                 });
             }
         });
     };
-    // add product
-    ProductController.addProducts = function (req, res, next) {
-        req.body.imageUrl = "http://localhost:8000/" + req.file.originalname; //imageURL
+    ProductController.addProduct = function (req, res, next) {
+        req.body.imageUrl = process.env.IMAGE_BASE_PATH + req.file.originalname;
         var product = new Product_1.Product(req.body);
-        Product_1.Product.insertMany(product, function (err, result) {
+        Product_1.Product.create(product, function (err, result) {
             if (err) {
                 res.status(500).json({ status: "failed", message: err });
             }
@@ -53,7 +50,6 @@ var ProductController = /** @class */ (function () {
             }
         });
     };
-    // Get product by category
     ProductController.getProductByCategory = function (req, res, next) {
         var category = req.body.category;
         var productCount = 0;
@@ -76,7 +72,6 @@ var ProductController = /** @class */ (function () {
             });
         });
     };
-    // Update product
     ProductController.updateProduct = function (req, res, next) {
         Product_1.Product.findByIdAndUpdate(req.body._id, {
             $set: {
@@ -97,7 +92,6 @@ var ProductController = /** @class */ (function () {
             }
         });
     };
-    // Searchproduct
     ProductController.searchProduct = function (req, res, next) {
         var productName = req.body.productName;
         var productCount = 0;
@@ -105,8 +99,7 @@ var ProductController = /** @class */ (function () {
             .estimatedDocumentCount()
             .exec(function (err, result) {
             productCount = result;
-            Product_1.Product.find({ productName: { $regex: productName, $options: "i" } }, //regex for avoid case sensetive
-            function (err, result) {
+            Product_1.Product.find({ productName: { $regex: productName, $options: "i" } }, function (err, result) {
                 if (err) {
                     res.status(500).json({ status: "failed", message: err });
                 }

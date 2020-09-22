@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 var mongoose_1 = require("mongoose");
-var CategorySchema = new mongoose_1.Schema({
+var ProductSchema = new mongoose_1.Schema({
     productName: {
         type: String,
         required: true,
         trim: true,
-        unique: true,
     },
     category: {
         type: String,
@@ -33,4 +32,4 @@ var CategorySchema = new mongoose_1.Schema({
         default: false,
     },
 });
-exports.Product = mongoose_1.model("Product", CategorySchema);
+exports.Product = mongoose_1.model("Product", ProductSchema);

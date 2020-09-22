@@ -1,1 +1,82 @@
-<p>order-update works!</p>
+<h4>Order Date: {{ orderDetails?.createdOn | date: "dd-MMM-yyyy hh:mm" }}</h4>
+<h4>Order Number: {{ orderDetails?._id }}</h4>
+<h1>PayPal Payment Details</h1>
+<h4>Paypal Order Id: {{ orderDetails?.paymentInfo.orderID }}</h4>
+<h4>Paypal Payment Id: {{ orderDetails?.paymentInfo.paymentID }}</h4>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-title> Items </mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="orderDetails?.products" class="tableWidth">
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+        <td mat-footer-cell *matFooterCellDef>Total</td>
+      </ng-container>
+
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.price | currency: "INR" }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.quantity * element.price | currency: "INR" }}
+        </td>
+        <td mat-footer-cell *matFooterCellDef>
+          {{ orderDetails?.total | currency: "INR" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<h4>Update Order Details</h4>
+<form
+  [formGroup]="updateStatusForm"
+  (submit)="updateStatus(orderDetails?._id)"
+  novalidate
+>
+  <mat-form-field>
+    <mat-select formControlName="status" placeholder="Order Status">
+      <mat-option *ngFor="let status of orderStatus" [value]="status">
+        {{ status }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div formGroupName="courierInfo">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Tracking Number"
+        formControlName="trackingNumber"
+        name="trackingNumber"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Courier Name"
+        formControlName="courierName"
+        name="courierName"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  </div>
+</form>

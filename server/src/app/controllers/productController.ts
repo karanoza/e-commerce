@@ -1,10 +1,7 @@
-import { productRoute } from "./../routes/productRoute";
-import { Product } from "./../models/Product";
-
 import { Request, Response, NextFunction, Errback } from "express";
+import { Product } from "../models/Product";
 
 export class ProductController {
-  // get products
   static getProducts(req: Request, res: Response, next: NextFunction) {
     Product.find({}, (err: Errback, result: any) => {
       if (err) {
@@ -12,14 +9,13 @@ export class ProductController {
       } else {
         res.json({
           status: "success",
-          message: "Products found",
+          message: "Products found!",
           data: result,
         });
       }
     });
   }
 
-  // getproduct by ID
   static getProductById(req: Request, res: Response, next: NextFunction) {
     const productId = req.params.id;
     Product.findById(productId, (err: Errback, result: any) => {
@@ -28,18 +24,17 @@ export class ProductController {
       } else {
         res.json({
           status: "success",
-          message: "Product found",
+          message: "Product found!",
           data: result,
         });
       }
     });
   }
 
-  // add product
-  static addProducts(req: Request, res: Response, next: NextFunction) {
-    req.body.imageUrl = "http://localhost:8000/" + req.file.originalname; //imageURL
+  static addProduct(req: Request, res: Response, next: NextFunction) {
+    req.body.imageUrl = process.env.IMAGE_BASE_PATH + req.file.originalname;
     const product = new Product(req.body);
-    Product.insertMany(product, (err: Errback, result: any) => {
+    Product.create(product, (err: Errback, result: any) => {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {
@@ -52,7 +47,6 @@ export class ProductController {
     });
   }
 
-  // Get product by category
   static getProductByCategory(req: Request, res: Response, next: NextFunction) {
     const category = req.body.category;
     let productCount = 0;
@@ -75,7 +69,6 @@ export class ProductController {
       });
   }
 
-  // Update product
   static updateProduct(req: Request, res: Response, next: NextFunction) {
     Product.findByIdAndUpdate(
       req.body._id,
@@ -100,8 +93,6 @@ export class ProductController {
     );
   }
 
-  // Searchproduct
-
   static searchProduct(req: Request, res: Response, next: NextFunction) {
     const productName = req.body.productName;
     let productCount = 0;
@@ -110,7 +101,7 @@ export class ProductController {
       .exec((err: Errback, result: any) => {
         productCount = result;
         Product.find(
-          { productName: { $regex: productName, $options: "i" } }, //regex for avoid case sensetive
+          { productName: { $regex: productName, $options: "i" } },
           (err: Errback, result: any) => {
             if (err) {
               res.status(500).json({ status: "failed", message: err });

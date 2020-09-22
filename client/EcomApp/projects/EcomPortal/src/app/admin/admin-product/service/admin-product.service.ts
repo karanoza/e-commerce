@@ -15,6 +15,7 @@ export class AdminProductService {
 
   addProduct(imageUrl: File, product: any) {
     const formData = new FormData();
+
     formData.append("file", imageUrl, imageUrl.name);
     formData.append("productName", product.productName);
     formData.append("category", product.category);

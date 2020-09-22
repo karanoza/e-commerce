@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.upload = void 0;
-// multer for file upload
 var multer = require("multer");
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {

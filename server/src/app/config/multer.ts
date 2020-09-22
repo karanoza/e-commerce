@@ -1,7 +1,6 @@
-// multer for file upload
 import * as multer from "multer";
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, __dirname + "/product");
   },

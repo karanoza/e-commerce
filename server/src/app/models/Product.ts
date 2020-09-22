@@ -1,11 +1,10 @@
 import { Schema, model } from "mongoose";
 
-const CategorySchema = new Schema({
+const ProductSchema = new Schema({
   productName: {
     type: String,
     required: true,
     trim: true,
-    unique: true,
   },
   category: {
     type: String,
@@ -32,4 +31,4 @@ const CategorySchema = new Schema({
   },
 });
 
-export const Product = model("Product", CategorySchema);
+export const Product = model("Product", ProductSchema);
