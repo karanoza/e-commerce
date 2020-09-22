@@ -8,8 +8,8 @@ productRoute.get("/", ProductController.getProducts);
 productRoute.get("/:id", ProductController.getProductById);
 productRoute.post("/", upload.single("file"), ProductController.addProducts);
 productRoute.post(
-  "/:getProductByCategory",
+  "/getProductByCategory",
   ProductController.getProductByCategory
 );
-productRoute.post("/:searchProduct", ProductController.searchProduct);
-productRoute.put("/:id", ProductController.updateProduct);
+productRoute.post("/searchProduct", ProductController.searchProduct);
+productRoute.put("", ProductController.updateProduct);

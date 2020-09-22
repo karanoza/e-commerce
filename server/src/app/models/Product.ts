@@ -22,17 +22,13 @@ const CategorySchema = new Schema({
     required: true,
     trim: true,
   },
-  outOfStock: {
-    type: Boolean,
-    default: false,
-  },
   price: {
     type: Number,
     required: true,
   },
-  isLive: {
+  outOfStock: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 });
 

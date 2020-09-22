@@ -16,6 +16,12 @@ import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { MatSelectModule } from "@angular/material/select";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatCardModule } from "@angular/material/card";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatBadgeModule } from "@angular/material/badge";
 
 const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
 
@@ -34,6 +40,12 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatInputModule,
     MatTableModule,
     MatDividerModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatSelectModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -52,6 +64,12 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatInputModule,
     MatTableModule,
     MatDividerModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatSelectModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

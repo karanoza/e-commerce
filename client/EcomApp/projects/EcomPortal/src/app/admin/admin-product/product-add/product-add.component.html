@@ -1,0 +1,57 @@
+<form [formGroup]="productForm" (submit)="submitProduct()" novalidate>
+  <mat-form-field>
+    <mat-select formControlName="category" placeholder="Category">
+      <mat-option
+        *ngFor="let category of categories"
+        [value]="category.categoryName"
+      >
+        {{ category.categoryName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Product Name"
+      formControlName="productName"
+      name="productname"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Description"
+      formControlName="description"
+      name="productname"
+    ></textarea>
+  </mat-form-field>
+  <div>
+    <input
+      type="file"
+      placeholder="Image"
+      formControlName="imageUrl"
+      name="file"
+      (change)="handleFileInput($event.target.files)"
+    />
+  </div>
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      placeholder="Price"
+      formControlName="price"
+      name="price"
+    />
+  </mat-form-field>
+  <div>
+    <button
+      [disabled]="productForm.invalid"
+      mat-raised-button
+      type="submit"
+      color="primary"
+    >
+      Add Product
+    </button>
+  </div>
+</form>

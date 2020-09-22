@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="productList" class="mat-elevation-z8">
+  <ng-container matColumnDef="_id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Category</th>
+    <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="productName">
+    <th mat-header-cell *matHeaderCellDef>Product Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="outOfStock">
+    <th mat-header-cell *matHeaderCellDef>Out of Stock</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-button-toggle-group>
+        <mat-button-toggle value="Yes" [checked]="element.outOfStock">
+          Yes
+        </mat-button-toggle>
+        <mat-button-toggle value="No" [checked]="!element.outOfStock">
+          No
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

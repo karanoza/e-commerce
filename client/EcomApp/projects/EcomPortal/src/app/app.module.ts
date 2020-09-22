@@ -16,9 +16,15 @@ import { ErrorHandlerService } from "./common/error-handler/error-handler.servic
 import { CategoryComponent } from './admin/category/category.component';
 import { CategoryAddComponent } from './admin/category/category-add/category-add.component';
 import { CategoryListComponent } from './admin/category/category-list/category-list.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminOrderListComponent } from './admin/admin-order/admin-order-list/admin-order-list.component';
+import { OrderUpdateComponent } from './admin/admin-order/order-update/order-update.component';
+import { ProductAddComponent } from './admin/admin-product/product-add/product-add.component';
+import { ProductListComponent } from './admin/admin-product/product-list/product-list.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, CategoryComponent, CategoryAddComponent, CategoryListComponent],
+  declarations: [AppComponent, ProfileComponent, CategoryComponent, CategoryAddComponent, CategoryListComponent, AdminOrderComponent, AdminProductComponent, AdminOrderListComponent, OrderUpdateComponent, ProductAddComponent, ProductListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

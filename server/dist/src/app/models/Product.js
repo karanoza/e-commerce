@@ -24,17 +24,13 @@ var CategorySchema = new mongoose_1.Schema({
         required: true,
         trim: true,
     },
-    outOfStock: {
-        type: Boolean,
-        default: false,
-    },
     price: {
         type: Number,
         required: true,
     },
-    isLive: {
+    outOfStock: {
         type: Boolean,
-        default: true,
+        default: false,
     },
 });
 exports.Product = mongoose_1.model("Product", CategorySchema);
