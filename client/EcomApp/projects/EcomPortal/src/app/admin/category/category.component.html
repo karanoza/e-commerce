@@ -1,1 +1,3 @@
-<app-category-add></app-category-add>
+<app-category-add (addcategory)="saveCategories($event)"></app-category-add>
+
+<app-category-list [categoryList]="catList"></app-category-list>
