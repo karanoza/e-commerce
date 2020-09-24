@@ -1,5 +1,12 @@
 import { errorLogRoute } from "./src/app/routes/errorLogRoutes";
-import { productRoute, userRoute, categoryRoute } from "./src/app/routes/index";
+import {
+  productRoute,
+  userRoute,
+  categoryRoute,
+  cartRoute,
+  orderRoute,
+  wishlistRoute,
+} from "./src/app/routes/index";
 
 import * as express from "express";
 import * as bodyParser from "body-parser";
@@ -45,6 +52,9 @@ app.use("/user", userRoute);
 app.use("/category", categoryRoute);
 app.use("/product", productRoute);
 app.use("/errorLog", errorLogRoute);
+app.use("/wishlist", wishlistRoute);
+app.use("/cart", cartRoute);
+app.use("/order", orderRoute);
 
 //connect mongodb
 var Mongoconnect = mongoose.connect(

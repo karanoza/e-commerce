@@ -13,18 +13,42 @@ import { CustomInterceptorService } from "./common/services/custom-Interceptor/c
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { ErrorHandlerService } from "./common/error-handler/error-handler.service";
-import { CategoryComponent } from './admin/category/category.component';
-import { CategoryAddComponent } from './admin/category/category-add/category-add.component';
-import { CategoryListComponent } from './admin/category/category-list/category-list.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminOrderListComponent } from './admin/admin-order/admin-order-list/admin-order-list.component';
-import { OrderUpdateComponent } from './admin/admin-order/order-update/order-update.component';
-import { ProductAddComponent } from './admin/admin-product/product-add/product-add.component';
-import { ProductListComponent } from './admin/admin-product/product-list/product-list.component';
+import { CategoryComponent } from "./admin/category/category.component";
+import { CategoryAddComponent } from "./admin/category/category-add/category-add.component";
+import { CategoryListComponent } from "./admin/category/category-list/category-list.component";
+import { AdminOrderComponent } from "./admin/admin-order/admin-order.component";
+import { AdminProductComponent } from "./admin/admin-product/admin-product.component";
+import { AdminOrderListComponent } from "./admin/admin-order/admin-order-list/admin-order-list.component";
+import { OrderUpdateComponent } from "./admin/admin-order/order-update/order-update.component";
+import { ProductAddComponent } from "./admin/admin-product/product-add/product-add.component";
+import { ProductListComponent } from "./admin/admin-product/product-list/product-list.component";
+import { ProductComponent } from "./user/product/product.component";
+import { ProductDetailsComponent } from "./user/product/product-details/product-details.component";
+import { RegistrationComponent } from "./common/registration/registration.component";
+import { OrderComponent } from "./user/order/order.component";
+import { OrderDetailsComponent } from "./user/order/order-details/order-details.component";
+import { PaymentComponent } from "./user/payment/payment.component";
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, CategoryComponent, CategoryAddComponent, CategoryListComponent, AdminOrderComponent, AdminProductComponent, AdminOrderListComponent, OrderUpdateComponent, ProductAddComponent, ProductListComponent],
+  declarations: [
+    AppComponent,
+    ProfileComponent,
+    CategoryComponent,
+    CategoryAddComponent,
+    CategoryListComponent,
+    AdminOrderComponent,
+    AdminProductComponent,
+    AdminOrderListComponent,
+    OrderUpdateComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductComponent,
+    ProductDetailsComponent,
+    RegistrationComponent,
+    OrderComponent,
+    OrderDetailsComponent,
+    PaymentComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -32,7 +56,9 @@ import { ProductListComponent } from './admin/admin-product/product-list/product
     MaterialSharedModule,
     MyCommonModule,
     AppRoutingModule,
+    RouterModule,
   ],
+  exports: [RouterModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

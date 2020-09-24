@@ -1,0 +1,19 @@
+<!-- {{productList | json}} -->
+
+<h1>Category: {{ categoryName }}</h1>
+<div>Product {{ productList?.length }} of {{ productCount }}</div>
+<mat-divider></mat-divider>
+<mat-card *ngFor="let product of productList; let i = index">
+  <mat-card-header>
+    <mat-card-title>{{ product.productName }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [routerLink]="[product._id]"
+    [src]="product.imageUrl"
+    [alt]="product.productName"
+  />
+  <div>
+    {{ product.price | currency: "INR" }}
+  </div>
+</mat-card>

@@ -1,4 +1,7 @@
+<!-- Material form for add products -->
+
 <form [formGroup]="productForm" (submit)="submitProduct()" novalidate>
+  <!-- Category Selector -->
   <mat-form-field>
     <mat-select formControlName="category" placeholder="Category">
       <mat-option
@@ -18,6 +21,7 @@
       name="productname"
     />
   </mat-form-field>
+
   <mat-form-field>
     <textarea
       matInput
@@ -26,6 +30,9 @@
       name="productname"
     ></textarea>
   </mat-form-field>
+
+  <!-- choose file button -->
+
   <div>
     <input
       type="file"
@@ -35,6 +42,7 @@
       (change)="handleFileInput($event.target.files)"
     />
   </div>
+
   <mat-form-field>
     <input
       matInput
@@ -44,6 +52,7 @@
       name="price"
     />
   </mat-form-field>
+
   <div>
     <button
       [disabled]="productForm.invalid"

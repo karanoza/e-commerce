@@ -1,0 +1,73 @@
+<!-- {{ registrationForm.valid  | json}}
+{{ registrationForm.invalid  | json}}
+{{ registrationForm.pristine  | json}}
+{{ registrationForm.value  | json}}
+{{ registrationForm.errors  | json}}
+ -->
+
+<mat-error *ngIf="registrationForm.errors?.invalidPassword">
+  Password and Confirm Password should be same!
+</mat-error>
+
+<form [formGroup]="registrationForm" (submit)="register()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" formControlName="firstName" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" formControlName="lastName" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Contact Number" formControlName="mobile" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <div>
+      <mat-error *ngIf="registrationForm.errors?.invalidPassword">
+        Password and Confirm Password should be same!
+      </mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      type="password"
+      placeholder="Confirm Password"
+      formControlName="confirmPassword"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      placeholder="Date of Birth"
+      formControlName="dob"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div>
+    <button
+      [disabled]="registrationForm.invalid"
+      type="submit"
+      mat-raised-button
+      color="primary"
+    >
+      Register
+    </button>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+.card {
+  width: 30%;
+  margin: 10px;
+  float: left;
+}
+
+mat-card-content {
+  font-size: 25px;
+}

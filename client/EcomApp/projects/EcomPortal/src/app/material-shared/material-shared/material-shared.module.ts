@@ -22,6 +22,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatCardModule } from "@angular/material/card";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatBadgeModule } from "@angular/material/badge";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
 
@@ -46,6 +47,7 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatButtonToggleModule,
     MatCardModule,
     MatGridListModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -72,6 +74,7 @@ const AppConfig: IAppConfig = { apiEndPoint: environment.apiENDPoint };
     MatGridListModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     HttpClientModule,
   ],
 })

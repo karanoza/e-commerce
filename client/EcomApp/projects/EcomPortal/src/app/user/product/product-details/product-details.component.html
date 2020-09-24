@@ -1,0 +1,58 @@
+<h1>
+  {{ productDetails?.productName }}
+</h1>
+<mat-divider></mat-divider>
+<mat-grid-list cols="4">
+  <mat-grid-tile colspan="1" rowspan="2">
+    <img class="fitWidth" mat-card-image [src]="productDetails?.imageUrl" />
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowspan="1">
+    <mat-grid-tile-header> Description </mat-grid-tile-header>
+    <div>
+      {{ productDetails?.description }}
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <mat-grid-tile-header> Quantity </mat-grid-tile-header>
+    <div>
+      <mat-select
+        class="matSelect"
+        required
+        [formControl]="quantity"
+        placeholder="Quantity"
+        name="qty"
+      >
+        <mat-option
+          *ngFor="let qty of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+          [value]="qty"
+        >
+          {{ qty }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="1">
+    <mat-grid-tile-header> Price </mat-grid-tile-header>
+    <div>
+      {{ productDetails?.price | currency: "INR" }}
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="2" rowspan="1">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToCart(productDetails._id)"
+    >
+      Add To Cart
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addToWishlist(productDetails._id)"
+    >
+      Add To WishList
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -17,6 +17,7 @@ export class MainNavComponent {
   role$: Observable<string>;
   cart$: Observable<IResponse>;
   categories: any;
+  category: string;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map((result) => result.matches));
