@@ -30,6 +30,9 @@ app.use("/user", index_1.userRoute);
 app.use("/category", index_1.categoryRoute);
 app.use("/product", index_1.productRoute);
 app.use("/errorLog", errorLogRoutes_1.errorLogRoute);
+app.use("/wishlist", index_1.wishlistRoute);
+app.use("/cart", index_1.cartRoute);
+app.use("/order", index_1.orderRoute);
 //connect mongodb
 var Mongoconnect = mongoose.connect("mongodb+srv://dbuser:karan12345@ecomdb.fwcnt.mongodb.net/ecomdb?retryWrites=true&w=majority");
 mongoose.connection.once("connected", function () {

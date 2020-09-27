@@ -14,4 +14,7 @@ __exportStar(require("./categoryRoute"), exports);
 __exportStar(require("./productRoute"), exports);
 __exportStar(require("./userRoutes"), exports);
 __exportStar(require("./errorLogRoutes"), exports);
+__exportStar(require("./wishListRoute"), exports);
+__exportStar(require("./cartRoute"), exports);
+__exportStar(require("./orderRoute"), exports);
 // concept call barling
