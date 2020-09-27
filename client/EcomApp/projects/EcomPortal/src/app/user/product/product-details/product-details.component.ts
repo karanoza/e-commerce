@@ -29,23 +29,23 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  // addToCart(productDetails: any) {
-  //   const productData = {
-  //     productId: productDetails,
-  //     quantity: this.quantity.value,
-  //   };
-  //   this.cartService.addProductToCart(productData).subscribe((result) => {
-  //     this.snackBar.open("Product Added to Cart!", "Product", {
-  //       duration: 1000,
-  //     });
-  //   });
-  // }
+  addToCart(productDetails: any) {
+    const productData = {
+      productId: productDetails,
+      quantity: this.quantity.value,
+    };
+    // this.cartService.addProductToCart(productData).subscribe((result) => {
+    //   this.snackBar.open("Product Added to Cart!", "Product", {
+    //     duration: 1000,
+    //   });
+    // });
+  }
 
-  // addToWishlist(productId: any) {
-  //   this.wishListService.addProductToWishList(productId).subscribe((result) => {
-  //     this.snackBar.open("Product Added to WishList!", "Product", {
-  //       duration: 1000,
-  //     });
-  //   });
-  // }
+  addToWishlist(productId: any) {
+    // this.wishListService.addProductToWishList(productId).subscribe((result) => {
+    //   this.snackBar.open("Product Added to WishList!", "Product", {
+    //     duration: 1000,
+    //   });
+    // });
+  }
 }

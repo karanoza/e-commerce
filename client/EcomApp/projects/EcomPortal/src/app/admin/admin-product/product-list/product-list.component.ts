@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.css"],
 })
-export class ProductListComponent implements OnInit {
+export class AdminProductListComponent implements OnInit {
   displayedColumns = ["_id", "category", "productName", "price", "outOfStock"];
   @Input() productList: any;
   constructor() {}

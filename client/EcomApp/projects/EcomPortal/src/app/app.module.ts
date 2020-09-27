@@ -21,13 +21,14 @@ import { AdminProductComponent } from "./admin/admin-product/admin-product.compo
 import { AdminOrderListComponent } from "./admin/admin-order/admin-order-list/admin-order-list.component";
 import { OrderUpdateComponent } from "./admin/admin-order/order-update/order-update.component";
 import { ProductAddComponent } from "./admin/admin-product/product-add/product-add.component";
-import { ProductListComponent } from "./admin/admin-product/product-list/product-list.component";
+import { AdminProductListComponent } from "./admin/admin-product/product-list/product-list.component";
 import { ProductComponent } from "./user/product/product.component";
 import { ProductDetailsComponent } from "./user/product/product-details/product-details.component";
 import { RegistrationComponent } from "./common/registration/registration.component";
 import { OrderComponent } from "./user/order/order.component";
 import { OrderDetailsComponent } from "./user/order/order-details/order-details.component";
 import { PaymentComponent } from "./user/payment/payment.component";
+import { ProductListComponent } from './user/product/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PaymentComponent } from "./user/payment/payment.component";
     OrderUpdateComponent,
     ProductAddComponent,
     ProductListComponent,
+    AdminProductListComponent,
     ProductComponent,
     ProductDetailsComponent,
     RegistrationComponent,
