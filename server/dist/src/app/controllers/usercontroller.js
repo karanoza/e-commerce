@@ -80,7 +80,7 @@ var UserController = /** @class */ (function () {
     };
     UserController.getProfile = function (req, res, next) {
         var userId = req.body.userId;
-        userId.findById(userId, function (err, result) {
+        User_1.User.findById(userId, function (err, result) {
             if (err) {
                 res.status(500).json({ status: "failed", message: err });
             }

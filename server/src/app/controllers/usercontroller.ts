@@ -80,7 +80,7 @@ export class UserController {
 
   static getProfile(req: Request, res: Response, next: NextFunction) {
     const userId = req.body.userId;
-    userId.findById(userId, (err: Errback, result: any) => {
+    User.findById(userId, (err: Errback, result: any) => {
       if (err) {
         res.status(500).json({ status: "failed", message: err });
       } else {
