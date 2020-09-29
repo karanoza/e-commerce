@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { IAppConfig } from "../../material-shared/material-shared/IAppConfig";
 import { APP_CONFIG } from "../../material-shared/material-shared/AppConfig";
 import { environment } from ".../../../projects/EcomPortal/src/environments/environment";
-import { IResponse } from "./loginResponse";
+import { IResponse } from "./IResponse";
 import { BehaviorSubject } from "rxjs";
 import { EncDecService } from "projects/ecom/core/src/lib/enc-dec.service";
 @Injectable({

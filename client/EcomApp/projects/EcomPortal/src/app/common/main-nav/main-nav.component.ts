@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { map, shareReplay } from "rxjs/operators";
 import { CategoryService } from "../services/category.service";
 import { LoginService } from "../services/login.service";
-import { IResponse } from "../services/loginResponse";
+import { IResponse } from "../services/IResponse";
 
 @Component({
   selector: "app-main-nav",

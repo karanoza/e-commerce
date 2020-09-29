@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { APP_CONFIG } from "../../material-shared/material-shared/AppConfig";
 import { IAppConfig } from "../../material-shared/material-shared/IAppConfig";
-import { IResponse } from "./loginResponse";
+import { IResponse } from "./IResponse";
 
 @Injectable({
   providedIn: "root",

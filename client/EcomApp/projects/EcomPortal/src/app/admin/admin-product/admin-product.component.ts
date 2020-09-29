@@ -24,12 +24,16 @@ export class AdminProductComponent implements OnInit {
 
   private getCategories() {
     this.categoryService.getCategories().subscribe((result) => {
+      console.log("in category list");
+
       this.categoryList = result.data;
     });
   }
 
   private getProducts() {
     this.productService.getProductList().subscribe((result) => {
+      console.log("In product list");
+
       if (result.status === "success") {
         this.products = result.data;
       }
