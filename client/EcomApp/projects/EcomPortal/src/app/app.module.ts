@@ -22,11 +22,6 @@ import { OrderUpdateComponent } from "./admin/admin-order/order-update/order-upd
 import { ProductAddComponent } from "./admin/admin-product/product-add/product-add.component";
 import { AdminProductListComponent } from "./admin/admin-product/product-list/product-list.component";
 
-import { RegistrationComponent } from "./common/registration/registration.component";
-import { OrderComponent } from "./user/order/order.component";
-import { OrderDetailsComponent } from "./user/order/order-details/order-details.component";
-import { PaymentComponent } from "./user/payment/payment.component";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +36,6 @@ import { PaymentComponent } from "./user/payment/payment.component";
     ProductAddComponent,
 
     AdminProductListComponent,
-
-    RegistrationComponent,
-    OrderComponent,
-    OrderDetailsComponent,
-    PaymentComponent,
   ],
   imports: [
     BrowserModule,

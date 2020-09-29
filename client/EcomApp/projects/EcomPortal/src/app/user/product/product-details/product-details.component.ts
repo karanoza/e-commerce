@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ActivatedRoute } from "@angular/router";
+import { CartService } from "../../cart/cart.service";
+import { WishlistService } from "../../wishlist/wishlist.service";
 import { ProductService } from "../service/product.service";
 
 @Component({
@@ -14,8 +16,8 @@ export class ProductDetailsComponent implements OnInit {
   productDetails: any;
   constructor(
     private productService: ProductService,
-    // private wishListService: WishlistService,
-    // private cartService: CartService,
+    private wishListService: WishlistService,
+    private cartService: CartService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute
   ) {}
@@ -34,18 +36,18 @@ export class ProductDetailsComponent implements OnInit {
       productId: productDetails,
       quantity: this.quantity.value,
     };
-    // this.cartService.addProductToCart(productData).subscribe((result) => {
-    //   this.snackBar.open("Product Added to Cart!", "Product", {
-    //     duration: 1000,
-    //   });
-    // });
+    this.cartService.addProductToCart(productData).subscribe((result) => {
+      this.snackBar.open("Product Added to Cart!", "Product", {
+        duration: 1000,
+      });
+    });
   }
 
   addToWishlist(productId: any) {
-    // this.wishListService.addProductToWishList(productId).subscribe((result) => {
-    //   this.snackBar.open("Product Added to WishList!", "Product", {
-    //     duration: 1000,
-    //   });
-    // });
+    this.wishListService.addProductToWishList(productId).subscribe((result) => {
+      this.snackBar.open("Product Added to WishList!", "Product", {
+        duration: 1000,
+      });
+    });
   }
 }

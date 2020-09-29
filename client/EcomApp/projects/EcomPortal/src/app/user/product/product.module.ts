@@ -14,6 +14,6 @@ import { UserRoutingModule } from "../user/user-routing.module";
     ProductDetailsComponent,
     ProductListComponent,
   ],
-  imports: [MaterialSharedModule, ProductRoutingModule, UserRoutingModule],
+  imports: [MaterialSharedModule, ProductRoutingModule],
 })
 export class ProductModule {}

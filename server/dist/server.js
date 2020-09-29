@@ -8,6 +8,7 @@ var dotenv = require("dotenv");
 //import { MOngoConnect } from "./src/app/db/db";
 var mongoose = require("mongoose"); // to include mongoose ( to interact with MongoDB )
 var cors = require("cors"); // to include cors ( to create middleware functionalities )
+var auth_1 = require("./src/app/middleware/auth");
 dotenv.load;
 // app.get("/", (req, res) => res.send("This is get express api"));
 var app = express();
@@ -30,7 +31,7 @@ app.use("/user", index_1.userRoute);
 app.use("/category", index_1.categoryRoute);
 app.use("/product", index_1.productRoute);
 app.use("/errorLog", errorLogRoutes_1.errorLogRoute);
-app.use("/wishlist", index_1.wishlistRoute);
+app.use("/wishlist", auth_1.validateUser, index_1.wishlistRoute);
 app.use("/cart", index_1.cartRoute);
 app.use("/order", index_1.orderRoute);
 //connect mongodb

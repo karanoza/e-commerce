@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<h1>Personal Information</h1>
+
+<div>
+  <label for="name">Name:</label>
+  {{ user?.firstName }} {{ user?.lastName }}
+</div>
+
+<div>
+  <label for="email">Email:</label>
+  {{ user?.email }}
+</div>
+
+<div>
+  <label for="mobile">Mobile:</label>
+  {{ user?.mobile }}
+</div>
+
+<div>
+  <label for="dob">Date of Birth:</label>
+  {{ user?.dob | date }}
+</div>
+
+<h1>Address Information</h1>
+
+<div>
+  <label for="address">Address:</label>
+  {{ user?.addressInfo?.addressLine1 }} <br />
+  {{ user?.addressInfo?.addressLine2 }}
+</div>
+
+<div>
+  <label for="city">City:</label>
+  {{ user?.addressInfo?.city }}
+</div>
+
+<div>
+  <label for="pin">Pin:</label>
+  {{ user?.addressInfo?.pin }}
+</div>

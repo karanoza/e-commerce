@@ -1,26 +1,25 @@
-<h1>Complete Payment</h1>
-<h4>Total : {{ total | currency: "INR" }}</h4>
+<h1>My Cart</h1>
 
-<h4>Products</h4>
-
-<!-- {{products | json}} -->
 <mat-divider></mat-divider>
-<table mat-table [dataSource]="products" class="tableWidth">
+<table #cartTable mat-table [dataSource]="userCart" class="tableWidth">
   <ng-container matColumnDef="imageUrl">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <img class="imageSize" [src]="element.imageUrl" />
     </td>
+    <td mat-footer-cell *matFooterCellDef>Total</td>
   </ng-container>
 
   <ng-container matColumnDef="productName">
     <th mat-header-cell *matHeaderCellDef>Product Name</th>
     <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantity</th>
     <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <ng-container matColumnDef="price">
@@ -28,6 +27,7 @@
     <td mat-cell *matCellDef="let element">
       {{ element.price | currency: "INR" }}
     </td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <ng-container matColumnDef="total">
@@ -35,41 +35,32 @@
     <td mat-cell *matCellDef="let element">
       {{ element.price * element.quantity | currency: "INR" }}
     </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let row">
+      <button type="button" mat-icon-button (click)="delete(row)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>
 <mat-divider></mat-divider>
-<h4>Shipping Address</h4>
-<form [formGroup]="shippingAddress">
-  <ng-template matStepLabel>Fill out your address details</ng-template>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Address Line1"
-      formControlName="addressLine1"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Address Line2"
-      formControlName="addressLine2"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="City" formControlName="city" />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Pin" formControlName="pin" />
-  </mat-form-field>
-  <div>
-    <button mat-raised-button color="primary" routerLink="/user/cart">
-      Back
-    </button>
-    <div *ngIf="shippingAddress.valid">
-      <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-    </div>
-  </div>
-</form>
+<div class="buttonPadding">
+  <button
+    [disabled]="userCart === undefined || userCart.length === 0"
+    class="floatRight"
+    mat-raised-button
+    color="primary"
+    (click)="checkOut()"
+  >
+    Checkout
+  </button>
+</div>

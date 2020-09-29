@@ -19,6 +19,7 @@ import * as multer from "multer";
 import * as Helmet from "helmet";
 import helmet = require("helmet");
 import * as compression from "compression";
+import { validateUser } from "./src/app/middleware/auth";
 
 dotenv.load;
 
@@ -52,7 +53,7 @@ app.use("/user", userRoute);
 app.use("/category", categoryRoute);
 app.use("/product", productRoute);
 app.use("/errorLog", errorLogRoute);
-app.use("/wishlist", wishlistRoute);
+app.use("/wishlist", validateUser, wishlistRoute);
 app.use("/cart", cartRoute);
 app.use("/order", orderRoute);
 

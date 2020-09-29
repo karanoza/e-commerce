@@ -7,6 +7,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)"
   >
+    <!-- role base menu -->
     <mat-toolbar>{{ (role$ | async) || "Menu" }}</mat-toolbar>
     <ng-container *ngIf="(role$ | async) === 'Admin'">
       <ng-container *ngTemplateOutlet="adminMenu"></ng-container>
@@ -67,12 +68,17 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
+<!-- User menu -->
+
 <ng-template #userMenu>
   <mat-nav-list>
     <mat-list-item>
       <a mat-list-item routerLink="/user/product">All</a>
     </mat-list-item>
     <mat-divider></mat-divider>
+
+    <!-- category list -->
+
     <mat-list-item *ngFor="let category of categories">
       <a mat-list-item (click)="getProduct(category.categoryName)">{{
         category.categoryName
@@ -86,6 +92,8 @@
     </mat-list-item>
   </mat-nav-list>
 </ng-template>
+
+<!-- Admin menu -->
 
 <ng-template #adminMenu>
   <mat-nav-list>
